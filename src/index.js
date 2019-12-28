@@ -5,6 +5,6 @@ import App from './App'
 import './styles/App.scss'
 
 
-render(<App  />, document.getElementById('root'))
+render(<App />, document.getElementById('root'))
 
 
