@@ -7,19 +7,19 @@ import classes from './SideDrawer.module.scss';
 
 
 const SideDrawer = props  => {
-    // let attachedClasses = [classes.SideDrawer, classes.Close];
-    // if (props.open) {
-    //     attachedClasses = [classes.SideDrawer, classes.Open];
-    // }
+    let attachedClasses = [classes.SideDrawer, classes.Close];
+    if (props.open) {
+        attachedClasses = [classes.SideDrawer, classes.Open];
+    }
     return (
         <Wrapper>
-            <Backdrop show={props.open} clicked={props.closed}/>
+            <Backdrop className={attachedClasses.join(' ')} />
             {/* <div className={attachedClasses.join(' ')}> */}
             <div className={classes.SideDrawer}>
                 <div className={classes.Logo}>
                     <Logo height={'50%'}/>
                 </div>
-                <nav>
+                <nav >
                     <NavigationItems />
                 </nav>
             </div>
