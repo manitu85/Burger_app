@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import Backdrop from '../../UI/Backdrop/Backdrop';
-import Wrapper from '../../../hoc/Wrapper';
+import Wrapper from '../../../hoc/Wrapper/Wrapper';
 import classes from './SideDrawer.module.scss';
 
 
@@ -13,9 +13,11 @@ const SideDrawer = props  => {
     }
     return (
         <Wrapper>
-            <Backdrop className={attachedClasses.join(' ')} />
-            {/* <div className={attachedClasses.join(' ')}> */}
-            <div className={classes.SideDrawer}>
+            <Backdrop 
+                show={props.open} 
+                clicked={props.closed} 
+            />
+            <div className={attachedClasses.join(' ')}>
                 <div className={classes.Logo}>
                     <Logo height={'50%'}/>
                 </div>
