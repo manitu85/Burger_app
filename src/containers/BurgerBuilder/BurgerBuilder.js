@@ -24,7 +24,7 @@ class BurgerBuilder extends Component {
     },
     totalPrice: 4,
     purchaseable: false,
-    order: false,
+    order: false,  // purchasing
     loading: false
   }
 
@@ -80,6 +80,7 @@ class BurgerBuilder extends Component {
     this.setState({ order: false })
   }
 
+
   orderContinueHandler = () => {
     this.setState({loading: true})
     const order = {
@@ -96,6 +97,7 @@ class BurgerBuilder extends Component {
       },
       deliveryMethod: 'fastest'
     }
+
     axios.post('/orders.json', order)
       .then(res => this.setState({
         loading: false,
@@ -106,6 +108,7 @@ class BurgerBuilder extends Component {
         order: false
       }))
   }
+
 
   render() {
     const disabledInfo = {
@@ -120,18 +123,20 @@ class BurgerBuilder extends Component {
     let orderSummary = <OrderSummary
       ingredients={this.state.ingredients}
       price={this.state.totalPrice}
-      purchaseCancelled={this.purchaseCancelHandler}
-      purchaseContinued={this.purchaseContinueHandler} />;
+      orderCancelled={this.orderCancelHandler}
+      orderContinue={this.orderContinueHandler} 
+    />
     if (this.state.loading) {
-      orderSummary = <Spinner />;
+      orderSummary = <Spinner />
     }
 
     return (
       <Wrapper>
         <Modal 
           modalClosed={this.orderCancelHandler}
-          show={this.state.order}>
-          {orderSummary}      
+          show={this.state.order}  // order
+        >
+          { orderSummary }      
         </Modal> 
         <Burger ingredients={this.state.ingredients} />
         <BuildControls 
