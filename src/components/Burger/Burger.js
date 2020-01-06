@@ -1,6 +1,6 @@
 import React from 'react'
-import classes from './Burger.module.scss'
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient'
+import classes from './Burger.module.scss'
 
 const Burger = props => {
   // The value of object is important for how to decide many ingredients required and the keys is important for which types of ingredients needed.
