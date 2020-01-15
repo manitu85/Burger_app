@@ -1,5 +1,5 @@
-import { ADD_INGREDIENT } from './actions'
-import { REMOVE_INGREDIENT } from './actions'
+import { ADD_INGREDIENT } from '../actions/actionTypes'
+import { REMOVE_INGREDIENT } from '../actions/actionTypes'
 
 
 const initialState = {
@@ -9,7 +9,7 @@ const initialState = {
     cheese: 0,
     meat: 0
   },
-  totalPrice: 0,
+  totalPrice: 2,
 }
 
 const INGREDIENT_PRICES = {
@@ -39,6 +39,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         ingredients: {
           ...state.ingredients,
+          // payload
           [action.ingredientName]: state.ingredients[action.ingredientName] - 1
         },
         totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName]
