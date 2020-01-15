@@ -6,8 +6,8 @@ import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 import Spinner from '../../components/UI/Spinner/Spinner'
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler'
-import axios from '../../axios-orders'
 import { connect } from 'react-redux'
+import axios from '../../axios-orders'
 import * as burgerBuilderActions from '../../store/actions/index'
 
 
@@ -16,18 +16,12 @@ class BurgerBuilder extends Component {
   state = {
     purchaseable: false,
     order: false,  // purchasing
-    loading: false,
-    error: false
   }
 
-  // componentDidMount() {
-  //   console.log(this.props);
-  //   // axios.get('https://react-burger-001ffa.firebaseio.com/ingredients.json')
-  //   // .then(res => {
-  //   //   this.setState({ ingredients: res.data })
-  //   // })
-  //   // .catch(error => this.setState({error: true}))
-  // }
+  componentDidMount() {
+    console.log(this.props);
+   
+  }
   
   updatePurchaseState = ingredients => {
     const sum = Object.keys(ingredients).map(iKey => {
@@ -87,10 +81,6 @@ class BurgerBuilder extends Component {
         orderCancelled={this.orderCancelHandler}
         orderContinue={this.orderContinueHandler}
       />
-    }
-
-    if (this.state.loading) {
-      orderSummary = <Spinner />
     }
 
     return (
