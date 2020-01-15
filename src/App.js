@@ -6,8 +6,6 @@ import Checkout from './containers/Checkout/Checkout'
 import Orders from './containers/Orders/Orders'
 
 
-
-
 const App = () => {
   return (
    <Layout>
