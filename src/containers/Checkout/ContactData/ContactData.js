@@ -6,7 +6,7 @@ import Input from '../../../components/UI/Input/Input'
 import { connect } from 'react-redux'
 import classes from './ContactData.module.scss'
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler'
-import { purchaseBurgerStart } from '../../../store/actions/index'
+import { purchaseBurger } from '../../../store/actions/index'
 
 
 export class ContactData extends Component {
@@ -87,13 +87,12 @@ export class ContactData extends Component {
             { value: 'cheapest', displayValue: 'Cheapest' }
           ]
         },
-        value: '', // bug fix it later
+        value: 'fastest', 
         validation: {},
         valid: true
       }
     },
-    formIsValid: false,
-    loading: false
+    formIsValid: false
   }
 
   checkValidity(value, rules) {
@@ -187,7 +186,7 @@ export class ContactData extends Component {
       </form>
     )
 
-    if (this.state.loading) {
+    if (this.props.loading) {
       form = <Spinner />
     }
 
@@ -203,18 +202,19 @@ export class ContactData extends Component {
 
 const mapStateToProps = state => {
   return {
-    ings: state.ingredients,
-    price: state.totalPrice
+    ings: state.burgerBuilder.ingredients,
+    price: state.burgerBuilder.totalPrice,
+    loading: state.order.loading
   }
 }
 
 
 const mapDispatchToProps = dispatch => {
   return {
-    onOrderBurger: (orderData) => dispatch(purchaseBurgerStart(orderData))
+    onOrderBurger: (orderData) => dispatch(purchaseBurger(orderData))
   }
 }
 
 
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios))
 
-export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData))

@@ -5,6 +5,7 @@ import classes from './CheckoutSummary.module.scss'
 
 
 const CheckoutSummary = props => {
+  console.log(props.checkoutContinued)
   return (
     <div className={classes.CheckoutSummary} >
       <h1>We hope taste well!!</h1>        
