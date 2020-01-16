@@ -1,7 +1,7 @@
 import { ADD_INGREDIENT } from './actionTypes'
 import { REMOVE_INGREDIENT} from './actionTypes'
 import { SET_INGREDIENTS } from './actionTypes'
-import { FETCH_INGREDIENTS_FAILD } from './actionTypes'
+import { FETCH_INGREDIENTS_FAILED } from './actionTypes'
 import axios from '../../axios-orders'
 
 export const addIngredient = name => {
@@ -27,7 +27,7 @@ export const setIngredients = ingredients => {
 
 export const fetchIngredientsFailed = () => {
   return {
-    type: FETCH_INGREDIENTS_FAILD,
+    type: FETCH_INGREDIENTS_FAILED,
   }
 } 
 
