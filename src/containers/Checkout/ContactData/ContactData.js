@@ -155,6 +155,7 @@ export class ContactData extends Component {
   }
   
   render() {
+    console.log('PRICE', this.props.price)
    const formElementsArr = []
     for (let key in this.state.orderForm) {
             formElementsArr.push({

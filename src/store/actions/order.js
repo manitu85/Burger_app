@@ -1,3 +1,4 @@
+import axios from '../../axios-orders'
 import { 
   PURCHASE_BURGER_SUCCESS, 
   PURCHASE_BURGER_FAIL,
@@ -7,7 +8,6 @@ import {
   FETCH_ORDERS_SUCCESS,
   FETCH_ORDERS_FAIL
 } from './actionTypes'
-import axios from '../../axios-orders'
 
 // Sync functions
 const purchaseBurgerSuccess = (id, orderData) => {

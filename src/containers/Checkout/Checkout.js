@@ -6,11 +6,10 @@ import ContactData from './ContactData/ContactData'
 
 class Checkout extends Component {
 
-  componentDidMount() {
+  // componentDidMount() {
     
-  }
+  // }
   
-
   checkoutCancelledHandler = () => {
     this.props.history.goBack()
   }
@@ -30,7 +29,7 @@ class Checkout extends Component {
           <CheckoutSummary
             ingredients={this.props.ings}
             checkoutCancelled={this.checkoutCancelledHandler}
-            checkoutContinued={this.checkoutContinuedHandler} />
+            checkoutContinued={this.checkoutContinueHandler} />
           <Route
             path={this.props.match.path + '/contact-data'}
             component={ContactData} />
