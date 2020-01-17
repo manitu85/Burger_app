@@ -14,7 +14,7 @@ import * as burgerBuilderActions from '../../store/actions/index'
 class BurgerBuilder extends Component {
   
   state = {
-    purchaseable: false,
+    // purchaseable: false,
     order: false,  // purchasing
   }
 
@@ -45,6 +45,7 @@ class BurgerBuilder extends Component {
 
 
   orderContinueHandler = () => {
+    this.props.onInitPurchase()
     this.props.history.push('/checkout')
   }
 
@@ -110,7 +111,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onIngredientAdded: (ingName) => dispatch(burgerBuilderActions.addIngredient(ingName)),
     onIngredientRemove: (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName)),
-    onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients())
+    onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients()),
+    onInitPurchase: () => dispatch(burgerBuilderActions.purchaseInit())
   }
 }
 

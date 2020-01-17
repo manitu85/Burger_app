@@ -7,8 +7,8 @@ import {
 
 const INGREDIENT_PRICES = {
   salad: 0.3,
-  cheese: 0.2,
-  meat: 1.5,
+  cheese: 0.5,
+  meat: 2.5,
   bacon: 0.8
 }
 
@@ -53,6 +53,7 @@ const reducer = (state = initialState, action) => {
           cheese: action.ingredients.cheese,
           meat: action.ingredients.meat
         },
+        totalPrice: 0,
         error: false
       }
 
