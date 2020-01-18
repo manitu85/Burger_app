@@ -51,6 +51,12 @@ const reducer = (state = initialState, action) => {
     case FETCH_ORDERS_START:
       return {
         ...state,
+        loading: false
+     }
+
+    case FETCH_ORDERS_SUCCESS:
+      return {
+        ...state,
         orders: action.orders,
         loading: false
      }
