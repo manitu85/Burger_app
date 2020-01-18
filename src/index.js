@@ -9,7 +9,7 @@ import thunk from 'redux-thunk'
 import App from './App'
 import './styles/App.scss'
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const rootReducer = combineReducers({
   burgerBuilder: burgerBuilderReducer, 
   order: orderReducer
@@ -20,7 +20,6 @@ const store = createStore(
   composeEnhancers(applyMiddleware(thunk))
 )
  
-
 const app = (
   <Provider store={store} >
     <BrowserRouter>
