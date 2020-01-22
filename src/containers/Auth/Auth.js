@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Input from '../../components/UI/Input/Input'
 import Button from '../../components/UI/Button/Button'
-import classes from './Auth.css'
+import classes from './Auth.module.scss'
 import * as actions from '../../store/actions/index'
 
 class Auth extends Component {
