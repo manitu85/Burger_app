@@ -3,6 +3,7 @@ import {
   AUTH_SUCCESS, 
   AUTH_FAIL 
 } from './actionTypes'
+import axios from '../../axios-orders'
 
 export const authStart = () => {
   return {
@@ -28,6 +29,21 @@ export const authFail = (error) => {
 export const auth = (email, password) => {
   return dispatch => {
     dispatch(authStart())
+    const authData = {
+      email,
+      password,
+      returnSecureToken: true
+    }
+    axios.post('https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBg3IBhMguBC2RbAzxYUkrIurDcHtn7IvQ', authData)
+    
+      .then(res => {
+        console.log(res)
+        dispatch(authSuccess(res))
+      })
+      .catch(err => {
+        console.log(err)
+        dispatch(authFail())
+      })
   }
 }
 
