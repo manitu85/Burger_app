@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import Input from '../../components/UI/Input/Input'
 import Button from '../../components/UI/Button/Button'
 import classes from './Auth.module.scss'
 import * as actions from '../../store/actions/index'
 import Spinner from '../../components/UI/Spinner/Spinner'
+
 
 class Auth extends Component {
   state = {
@@ -82,6 +84,7 @@ class Auth extends Component {
         touched: true
       }
     }
+    // console.log("updatedControls",updatedControls)
     this.setState({ controls: updatedControls })
   }
 
@@ -99,11 +102,16 @@ class Auth extends Component {
   render() {
     const formElementsArray = []
     for (let key in this.state.controls) {
+      // console.log("KEY", this.state.controls[key])
       formElementsArray.push({
         id: key,
         config: this.state.controls[key]
+        
       })
     }
+
+    // console.log("ARR FORM", formElementsArray)
+    
 
     let form = formElementsArray.map(formElement => (
       <Input
@@ -129,16 +137,23 @@ class Auth extends Component {
       )
     }
 
+    let authRedirect = null // is by default
+        if (this.props.isAuthenticated) {
+            authRedirect = <Redirect to={this.props.authRedirectPath}/>
+        }
+
     return (
       <div className={classes.Auth}>
+        { authRedirect }
         { errorMessage }
+        <p><strong>{this.state.isSignup ? 'REGISTER' : 'LOGIN IN'}</strong></p>
         <form onSubmit={this.submitHandler}>
           {form}
           <Button btnType="Success">SUBMIT</Button>
         </form>
         <Button
           clicked={this.switchAuthModeHandler}
-          btnType="Danger">SWITCH TO {this.state.isSignup ? 'SIGN IN' : 'SIGN UP'}
+          btnType="Danger">SWITCH TO {this.state.isSignup ? 'LOGIN IN' : 'REGISTER'}
         </Button>
       </div>
     )
@@ -148,7 +163,10 @@ class Auth extends Component {
 const mapStateToProps = state => {
   return {
     loading: state.auth.loading,
-    error: state.auth.error
+    error: state.auth.error,
+    isAuthenticated: state.auth.token !== null,
+    buildingBurger: state.burgerBuilder.building,
+    authRedirectPath: state.auth.authRedirectPath
   }
 }
 

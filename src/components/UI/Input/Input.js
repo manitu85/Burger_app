@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './Input.module.scss'
 
-const Input = (props) => {
+const Input = props => {
   let inputElement = null
 
   const inputClasses = [classes.InputElement]
