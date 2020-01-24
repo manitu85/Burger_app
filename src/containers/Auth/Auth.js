@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import Input from '../../components/UI/Input/Input'
 import Button from '../../components/UI/Button/Button'
-import classes from './Auth.module.scss'
 import * as actions from '../../store/actions/index'
 import Spinner from '../../components/UI/Spinner/Spinner'
+import classes from './Auth.module.scss'
 
 
 class Auth extends Component {
@@ -43,6 +43,12 @@ class Auth extends Component {
     isSignup: true
   }
 
+  componentDidMount() {
+    if (!this.props.buildingBurger && this.props.authRedirectPath !== '/') {
+        this.props.onSetAuthRedirectPath()
+    }
+  }
+  
   checkValidity(value, rules) {
     let isValid = true
     if (!rules) {
@@ -102,17 +108,14 @@ class Auth extends Component {
   render() {
     const formElementsArray = []
     for (let key in this.state.controls) {
-      // console.log("KEY", this.state.controls[key])
+      // Arr with obj's inside
       formElementsArray.push({
         id: key,
         config: this.state.controls[key]
-        
       })
     }
 
-    // console.log("ARR FORM", formElementsArray)
     
-
     let form = formElementsArray.map(formElement => (
       <Input
         key={formElement.id}
@@ -172,7 +175,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password, isSignup))
+    onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password, isSignup)),
+    onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
   }
 }
 
