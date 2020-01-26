@@ -10,8 +10,8 @@ import {
 import { updateObject } from '../utility'
 
 const initialState = {
-  orders: [],
-  loading: false,
+  orders   : [],
+  loading  : false,
   purchased: false
 }
 
@@ -20,15 +20,15 @@ const purchaseInit = (state, action) => {
 }
 
 const purchaseBurgerStart = (state, action) => {
-  return updateObject(state, { loading: false })
+  return updateObject(state, { loading: true })
 }
 
 const purchaseBurgerSuccess = (state, action) => {
   const newOrder = updateObject(action.orderData, { id: action.orderId })
   return updateObject(state, {
-    loading: false,
+    loading  : false,
     purchased: true,
-    orders: state.orders.concat(newOrder)
+    orders   : state.orders.concat(newOrder)
   })
 }
 
@@ -42,7 +42,7 @@ const fetchOrdersStart = (state, action) => {
 
 const fetchOrdersSuccess = (state, action) => {
   return updateObject(state, {
-    orders: action.orders,
+    orders : action.orders,
     loading: false
   })
 }
@@ -53,14 +53,14 @@ const fetchOrdersFail = (state, action) => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case PURCHASE_INIT: return purchaseInit(state, action)
-    case PURCHASE_BURGER_START: return purchaseBurgerStart(state, action)
+    case PURCHASE_INIT          : return purchaseInit(state, action)
+    case PURCHASE_BURGER_START  : return purchaseBurgerStart(state, action)
     case PURCHASE_BURGER_SUCCESS: return purchaseBurgerSuccess(state, action)
-    case PURCHASE_BURGER_FAIL: return purchaseBurgerFail(state, action)
-    case FETCH_ORDERS_START: return fetchOrdersStart(state, action)
-    case FETCH_ORDERS_SUCCESS: return fetchOrdersSuccess(state, action)
-    case FETCH_ORDERS_FAIL: return fetchOrdersFail(state, action)
-    default: return state
+    case PURCHASE_BURGER_FAIL   : return purchaseBurgerFail(state, action)
+    case FETCH_ORDERS_START     : return fetchOrdersStart(state, action)
+    case FETCH_ORDERS_SUCCESS   : return fetchOrdersSuccess(state, action)
+    case FETCH_ORDERS_FAIL      : return fetchOrdersFail(state, action)
+         default                : return state
   }
 }
 
