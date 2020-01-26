@@ -5,8 +5,6 @@ import classes from './CheckoutSummary.module.scss'
 
 
 const CheckoutSummary = props => {
-  console.log('CONTINUED TO ORDER', props.checkoutContinued)
-  console.log('CANCEL TO ORDER', props.checkoutCancelled)
   return (
     <div className={classes.CheckoutSummary} >
       <h1>We hope taste well!!</h1>        
