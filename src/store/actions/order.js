@@ -1,5 +1,6 @@
 import { 
   PURCHASE_INIT,
+  PURCHASE_BURGER,
   PURCHASE_BURGER_START,
   PURCHASE_BURGER_SUCCESS, 
   PURCHASE_BURGER_FAIL,
@@ -8,7 +9,7 @@ import {
   FETCH_ORDERS_FAIL,
   FETCH_ORDERS
 } from './actionTypes'
-import axios from '../../axios-orders'
+// import axios from '../../axios-orders'
 
 
 // Purchasing Burger
@@ -34,20 +35,10 @@ export const purchaseBurgerStart = () => {
 }
 
 export const purchaseBurger = (orderData, token) => {
-  // return {
-  //   type: PURCHASE_BURGER_START,
-  //   orderData: orderData,
-  //   token: token
-  // }
-  return dispatch => {
-    dispatch(purchaseBurgerStart())
-    axios.post('/orders.json?auth=' + token, orderData)
-      .then(response => {
-        dispatch(purchaseBurgerSuccess(response.data.name, orderData))
-      })
-      .catch(error => {
-        dispatch(purchaseBurgerFail(error))
-      })
+  return {
+    type: PURCHASE_BURGER,
+    orderData,
+    token
   }
 }
 
@@ -84,24 +75,6 @@ export const fetchOrders = (token, userId) => {
     token,
     userId
   }
-  // return dispatch => {
-  //   dispatch(fetchOrdersStart())
-  //   const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"'
-  //   axios.get('/orders.json' + queryParams)
-  //     .then(res => {
-  //       const fetchedOrders = []
-  //       for (let key in res.data) {
-  //         fetchedOrders.push({
-  //           ...res.data[key],
-  //           id: key
-  //         })
-  //       }
-  //       dispatch(fetchOrdersSuccess(fetchedOrders))
-  //     })
-  //     .catch(err => {
-  //       dispatch(fetchOrdersFail(err))
-  //     })
-  // }
 }
 
 
