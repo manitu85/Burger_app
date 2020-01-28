@@ -1,8 +1,11 @@
-import { ADD_INGREDIENT } from './actionTypes'
-import { REMOVE_INGREDIENT} from './actionTypes'
-import { SET_INGREDIENTS } from './actionTypes'
-import { FETCH_INGREDIENTS_FAILED } from './actionTypes'
-import axios from '../../axios-orders'
+import { 
+  INIT_INGREDIENTS, 
+  ADD_INGREDIENT, 
+  REMOVE_INGREDIENT, 
+  SET_INGREDIENTS, 
+  FETCH_INGREDIENTS_FAILED  
+} from './actionTypes'
+
 
 export const addIngredient = name => {
   return {
@@ -32,13 +35,7 @@ export const fetchIngredientsFailed = () => {
 } 
 
 export const initIngredients = () => {
-  return dispatch => {
-    axios.get('https://react-burger-001ffa.firebaseio.com/ingredients.json')
-      .then(res => {
-        dispatch(setIngredients(res.data))
-      })
-      .catch(error => {
-        dispatch(fetchIngredientsFailed())
-      })
+  return {
+    type: INIT_INGREDIENTS
   }
 }

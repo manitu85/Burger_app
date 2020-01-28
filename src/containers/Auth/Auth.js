@@ -8,7 +8,6 @@ import Spinner from '../../components/UI/Spinner/Spinner'
 import { updateObject, checkValidity } from '../../shared/utility'
 import classes from './Auth.module.scss'
 
-
 class Auth extends Component {
   state = {
     controls: {
@@ -75,7 +74,7 @@ class Auth extends Component {
   render() {
     const formElementsArray = []
     for (let key in this.state.controls) {
-      // Arr with obj's inside
+      // Arr with objects inside
       formElementsArray.push({
         id: key,
         config: this.state.controls[key]
