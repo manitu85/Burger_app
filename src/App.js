@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
-import Layout from './hoc/Layout/Layout'
+import Layout from './hoc/Layout'
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder'
 import Checkout from './containers/Checkout/Checkout'
 import Orders from './containers/Orders/Orders'
 import Auth  from './containers/Auth/Auth'
-import Logout from './containers/Auth/Logout/Logout'
+import Logout from './containers/Auth/Logout'
 import * as actions from './store/actions/index'
 
 class App extends Component {

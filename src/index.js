@@ -28,7 +28,7 @@ const store = createStore(
   composeEnhancers(applyMiddleware(thunk, sagaMiddleware))
 )
 
-// Run sagas middleware
+// Run Saga's middleware
 sagaMiddleware.run(watchAuth, watchBurgerBuilder)
 sagaMiddleware.run(watchBurgerBuilder)
 sagaMiddleware.run(watchOrder)

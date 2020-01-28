@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './Orders.module.scss'
+import classes from '../../styles/Orders/Order.module.scss'
 
 const Order = props => {
 
