@@ -1,13 +1,14 @@
 import { 
+  PURCHASE_INIT,
+  PURCHASE_BURGER_START,
   PURCHASE_BURGER_SUCCESS, 
   PURCHASE_BURGER_FAIL,
-  PURCHASE_BURGER_START,
-  PURCHASE_INIT,
   FETCH_ORDERS_START,
   FETCH_ORDERS_SUCCESS,
   FETCH_ORDERS_FAIL,
   FETCH_ORDERS
 } from './actionTypes'
+import axios from '../../axios-orders'
 
 
 // Purchasing Burger
@@ -33,22 +34,21 @@ export const purchaseBurgerStart = () => {
 }
 
 export const purchaseBurger = (orderData, token) => {
-  return {
-    type: PURCHASE_BURGER_START,
-    orderData: orderData,
-    token: token
-    
-  }
-  // return dispatch => {
-  //   dispatch(purchaseBurgerStart())
-  //   axios.post('/orders.json?auth=' + token, orderData)
-  //     .then(response => {
-  //       dispatch(purchaseBurgerSuccess(response.data.name, orderData))
-  //     })
-  //     .catch(error => {
-  //       dispatch(purchaseBurgerFail(error))
-  //     })
+  // return {
+  //   type: PURCHASE_BURGER_START,
+  //   orderData: orderData,
+  //   token: token
   // }
+  return dispatch => {
+    dispatch(purchaseBurgerStart())
+    axios.post('/orders.json?auth=' + token, orderData)
+      .then(response => {
+        dispatch(purchaseBurgerSuccess(response.data.name, orderData))
+      })
+      .catch(error => {
+        dispatch(purchaseBurgerFail(error))
+      })
+  }
 }
 
 export const purchaseInit = () => {
@@ -81,8 +81,8 @@ export const fetchOrdersStart = () => {
 export const fetchOrders = (token, userId) => {
   return {
     type: FETCH_ORDERS,
-    token: token,
-    userId: userId
+    token,
+    userId
   }
   // return dispatch => {
   //   dispatch(fetchOrdersStart())

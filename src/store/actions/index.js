@@ -9,14 +9,14 @@ export {
 
 // Orders exports
 export { 
-  purchaseBurger,
   purchaseInit,
-  fetchOrders,
+  purchaseBurger,
   purchaseBurgerStart,
-  purchaseBurgerFail,
   purchaseBurgerSuccess,
-  fetchOrdersSuccess,
+  purchaseBurgerFail,
+  fetchOrders,
   fetchOrdersStart,
+  fetchOrdersSuccess,
   fetchOrdersFail
 } from './order'
 
@@ -32,3 +32,5 @@ export {
   authFail,
   checkAuthTimeout
 } from './auth'
+
+
