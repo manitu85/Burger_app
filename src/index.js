@@ -7,13 +7,14 @@ import thunk from 'redux-thunk'
 import createSagaMiddleware from 'redux-saga'
 
 import App from './App'
-import './styles/App.scss'
-import burgerBuilderReducer from './store/reducers/burgerBuilder'
-import orderReducer from './store/reducers/order'
 import authReducer from './store/reducers/auth'
+import orderReducer from './store/reducers/order'
+import burgerBuilderReducer from './store/reducers/burgerBuilder'
 import { watchAuth, watchBurgerBuilder, watchOrder } from './store/sagas/index'
+import './styles/App.scss'
 
 
+// Combine reducers and setup redux devtool
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose
 const rootReducer = combineReducers({
   burgerBuilder: burgerBuilderReducer, 
@@ -21,8 +22,10 @@ const rootReducer = combineReducers({
   auth: authReducer
 })
 
+// Initialize Saga Middleware
 const sagaMiddleware = createSagaMiddleware()
 
+// Create store
 const store = createStore(
   rootReducer, 
   composeEnhancers(applyMiddleware(thunk, sagaMiddleware))
