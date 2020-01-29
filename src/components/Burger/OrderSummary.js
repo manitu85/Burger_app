@@ -1,33 +1,36 @@
-import React, { Component } from 'react'
+import React  from 'react'
 import Wrapper from '../../hoc/Wrapper'
 import Button from '../UI/Button'
 
-class OrderSummary extends Component {
-  render() {
-    const ingredientSummary = Object.keys(this.props.ingredients).map(iKey => {
-      return <li key={iKey} ><span style={{ textTransform: 'capitalize' }} >{iKey}</span> : {this.props.ingredients[iKey]} </li>
-    })
-    return (
-      <Wrapper>
-        <h3>Your order</h3>
-        <p>A delicious burger with the following ingredients:</p>
-        <ul>
-          {ingredientSummary}
-        </ul>
-        <p><strong>Total Price: ${this.props.price.toFixed(2)} </strong></p>
-        <p>Continue to Checkout</p>
-        <Button
-          btnType='Danger'
-          clicked={this.props.orderCancelled}
-        >CANCEL</Button>
-        <Button
-          btnType='Success'
-          clicked={this.props.orderContinue}
-        >CONTINUE</Button>
-      </Wrapper>
+const OrderSummary = props => {
 
-    )
-  }
+  // Destructuring props
+  const { ingredients, price, orderCancelled, orderContinue } = props
+  
+  // Methods
+  const ingredientSummary = Object.keys(ingredients).map(iKey => {
+    return <li key={iKey} ><span style={{ textTransform: 'capitalize' }} >{iKey}</span> : {ingredients[iKey]} </li>
+  })
+
+  return (
+    <Wrapper>
+      <h3>Your order</h3>
+      <p>A delicious burger with the following ingredients:</p>
+      <ul>
+        {ingredientSummary}
+      </ul>
+      <p><strong>Total Price: ${price.toFixed(2)} </strong></p>
+      <p>Continue to Checkout</p>
+      <Button
+        btnType='Danger'
+        clicked={orderCancelled}
+      >CANCEL</Button>
+      <Button
+        btnType='Success'
+        clicked={orderContinue}
+      >CONTINUE</Button>
+    </Wrapper>
+  )
 }
 
 

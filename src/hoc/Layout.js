@@ -8,8 +8,10 @@ import classes from '../styles/Layout/Layout.module.scss'
 
 const Layout = ({ children, isAuthenticated }) => {
 
+  // use state hooks
   const [showSideDrawer, setShowSideDrawer ] = useState(false)
   
+  // Methods
   const sideDrawerCloseHandler = () => setShowSideDrawer(false)
   const drawerToggleHandler = () => setShowSideDrawer(!showSideDrawer)
   

@@ -1,10 +1,10 @@
+import { updateObject } from '../../shared/utility'
 import { 
   ADD_INGREDIENT, 
   REMOVE_INGREDIENT, 
   SET_INGREDIENTS, 
   FETCH_INGREDIENTS_FAILED 
 } from '../actions/actionTypes'
-import { updateObject } from '../../shared/utility'
 
 const initialState = {
   ingredients: null,
@@ -36,7 +36,7 @@ const removeIngredient = (state, action) => {
   const updatedIngs = updateObject(state.ingredients, updatedIng)
   const updatedSt = {
     ingredients: updatedIngs,
-    totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName],
+    totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName],
     building: true
   }
   return updateObject(state, updatedSt)

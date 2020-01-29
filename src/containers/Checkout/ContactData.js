@@ -184,6 +184,7 @@ const ContactData = props => {
     )
 }
 
+
 const mapStateToProps = state => {
   return {
     ings: state.burgerBuilder.ingredients,

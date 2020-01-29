@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import * as actions from '../../store/actions/index'
 
-class Logout extends Component {
-  componentDidMount() {
-    this.props.onLogout()
-  }
+const Logout = ({ onLogout }) => {
 
-  render() {
-    return <Redirect to="/" />
-  }
+  useEffect(() => {
+    onLogout()
+  // eslint-disable-next-line
+  }, []) // watching on logout
+
+  return <Redirect to="/" />
 }
 
 const mapDispatchToProps = dispatch => {
