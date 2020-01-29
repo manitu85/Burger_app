@@ -1,5 +1,4 @@
 import React from 'react'
-
 import Wrapper from './Wrapper'
 import Modal from '../components/UI/Modal'
 import useHttpErrorHandler from '../hooks/http-error-handler'

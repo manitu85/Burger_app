@@ -15,7 +15,7 @@ const ContactData = props => {
   // Destructuring props
   const { ings, price, userId, token, onOrderBurger, loading } = props
   
-  // use state hooks
+  // Use state hooks
   const [formIsValid, setFormIsValid] = useState(false)
   const [orderForm, setOrderForm] = useState({
     name: {
