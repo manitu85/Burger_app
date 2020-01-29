@@ -44,6 +44,7 @@ const app = (
   </Provider>
 )
 
-render(app, document.getElementById('root'))
+const root = document.getElementById('root')
+render(app, root)
 
 
